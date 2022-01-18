@@ -15,7 +15,6 @@ import Register from "../pages/Register";
 // import Register from "../pages/Register";
 
 export default class RouterURL extends Component {
-  
   render() {
     return (
       <div className="container">
@@ -26,9 +25,9 @@ export default class RouterURL extends Component {
           <Route path="/choose-foods/:id" component={BookingFood} />
           <Route path="/checkout" component={BookingCheckout} />
           <Route path="/book-result" component={BookingComplete} />
-          <Route path="/login" component={Login}/>
+          <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/user" component={UserDetail}/>
+          <Route path="/user" component={UserDetail} />
           <Route expact path="/" component={Home} />
           <Route component={Home} />
         </Switch>

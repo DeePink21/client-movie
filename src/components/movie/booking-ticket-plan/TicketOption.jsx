@@ -80,7 +80,6 @@ export default class TicketOption extends Component {
       console.log(this.state);
       // let showtimes = this.state.showtimes;
     });
-
   }
 
   mappingDropdownList = (data) => {
