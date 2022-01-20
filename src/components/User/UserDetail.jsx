@@ -9,39 +9,29 @@ export default class UserDetail extends Component {
     super(props);
 
     this.state = {
-      user: {
-        // name: "",
-        // email: ""
-      },
+      user: {},
       userId: null,
-      isLogged: true,
-
+      isLogged: window.sessionStorage.getItem("user") ? true : false,
       phone: "",
+      fullName: " ",
       firstName: "",
       lastName: "",
       email: "",
-
-      fullName: "",
       query: "",
       orders: [],
     };
-    // this.book = this.book.bind(this);
-    // this.isInputChange = this.isInputChange(this);
   }
 
   componentDidMount() {
     if (window.sessionStorage.getItem("user")) {
-      var user = JSON.parse(window.sessionStorage.getItem("user"));
+      let user = JSON.parse(window.sessionStorage.getItem("user"));
+      let phone = parseInt(localStorage.phone);
       this.setState({
         user: user,
-        userId: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        fullName: user.fullName,
         email: user.email,
-        phone: "01223695542",
+        phone: phone ? phone : "",
       });
-    } else {
-      this.setState({ isLogged: true });
     }
   }
 
@@ -68,6 +58,7 @@ export default class UserDetail extends Component {
       },
     };
     UserService.updateUser(user, token).then((res) => {
+      console.log(res.data);
       alert("Cập nhật thành công!");
     });
   };
@@ -96,22 +87,10 @@ export default class UserDetail extends Component {
             <div className="col-lg-8">
               <div className="checkout-widget checkout-contact">
                 <h5 className="title">Thông tin người dùng </h5>
-                {/* <form className="checkout-contact-form">
-            <div className="form-group">
-              <input type="text" placeholder="Full Name" />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Enter your Mail" />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Enter your Phone Number " />
-            </div>
-            <div className="form-group">
-              <input type="submit" defaultValue="Continue" className="custom-button" />
-            </div>
-          </form> */}
-
                 <form className="checkout-contact-form">
+                  <div className="form-group">
+                    Xin Chào! <a href="#0">{this.state.fullName}</a>
+                  </div>
                   <div className="form-group">
                     <input
                       type="text"

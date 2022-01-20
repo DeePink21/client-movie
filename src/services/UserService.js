@@ -10,6 +10,10 @@ class UserService {
     });
   };
 
+  getUserById = (userId) => {
+    return axios.get(`${api.users}/${userId}`);
+  };
+
   //   getOrdersByUserId = (userId) => {
   //     return axios.get(`${api.ordersUser}?user_id=${userId}`);
   //   };
